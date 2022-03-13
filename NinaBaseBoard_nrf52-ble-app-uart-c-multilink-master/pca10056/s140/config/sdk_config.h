@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017 - 2021, Nordic Semiconductor ASA
+ * Copyright (c) 2017 - 2019, Nordic Semiconductor ASA
  *
  * All rights reserved.
  *
@@ -49,6 +49,11 @@
 // <h> Application 
 
 //==========================================================
+// <o> APP_SHUTDOWN_HANDLER_PRIORITY - Application shutdown observer priority. 
+#ifndef APP_SHUTDOWN_HANDLER_PRIORITY
+#define APP_SHUTDOWN_HANDLER_PRIORITY 1
+#endif
+
 // <o> NRF_BLE_GQ_QUEUE_SIZE - Queue size for BLE GATT Queue module. 
 #ifndef NRF_BLE_GQ_QUEUE_SIZE
 #define NRF_BLE_GQ_QUEUE_SIZE 4
@@ -77,7 +82,7 @@
  
 
 #ifndef BLE_ADVERTISING_ENABLED
-#define BLE_ADVERTISING_ENABLED 1
+#define BLE_ADVERTISING_ENABLED 0
 #endif
 
 // <q> BLE_DB_DISCOVERY_ENABLED  - ble_db_discovery - Database discovery module
@@ -87,83 +92,12 @@
 #define BLE_DB_DISCOVERY_ENABLED 1
 #endif
 
-// <e> BLE_DTM_ENABLED - ble_dtm - Module for testing RF/PHY using DTM commands
-//==========================================================
+// <q> BLE_DTM_ENABLED  - ble_dtm - Module for testing RF/PHY using DTM commands
+ 
+
 #ifndef BLE_DTM_ENABLED
 #define BLE_DTM_ENABLED 0
 #endif
-// <o> NRF_RADIO_ANTENNA_PIN_1 - Antenna 1 GPIO pin 
-#ifndef NRF_RADIO_ANTENNA_PIN_1
-#define NRF_RADIO_ANTENNA_PIN_1 21
-#endif
-
-// <o> NRF_RADIO_ANTENNA_PIN_2 - Antenna 2 GPIO pin 
-#ifndef NRF_RADIO_ANTENNA_PIN_2
-#define NRF_RADIO_ANTENNA_PIN_2 23
-#endif
-
-// <o> NRF_RADIO_ANTENNA_PIN_3 - Antenna 3 GPIO pin 
-#ifndef NRF_RADIO_ANTENNA_PIN_3
-#define NRF_RADIO_ANTENNA_PIN_3 26
-#endif
-
-// <o> NRF_RADIO_ANTENNA_PIN_4 - Antenna 4 GPIO pin 
-#ifndef NRF_RADIO_ANTENNA_PIN_4
-#define NRF_RADIO_ANTENNA_PIN_4 27
-#endif
-
-// <o> NRF_RADIO_ANTENNA_PIN_5 - Antenna 5 GPIO pin 
-#ifndef NRF_RADIO_ANTENNA_PIN_5
-#define NRF_RADIO_ANTENNA_PIN_5 28
-#endif
-
-// <o> NRF_RADIO_ANTENNA_PIN_6 - Antenna 6 GPIO pin 
-#ifndef NRF_RADIO_ANTENNA_PIN_6
-#define NRF_RADIO_ANTENNA_PIN_6 29
-#endif
-
-// <o> NRF_RADIO_ANTENNA_PIN_7 - Antenna 7 GPIO pin 
-#ifndef NRF_RADIO_ANTENNA_PIN_7
-#define NRF_RADIO_ANTENNA_PIN_7 30
-#endif
-
-// <o> NRF_RADIO_ANTENNA_PIN_8 - Antenna 8 GPIO pin 
-#ifndef NRF_RADIO_ANTENNA_PIN_8
-#define NRF_RADIO_ANTENNA_PIN_8 31
-#endif
-
-// <o> NRF_RADIO_ANTENNA_COUNT  
-#ifndef NRF_RADIO_ANTENNA_COUNT
-#define NRF_RADIO_ANTENNA_COUNT 12
-#endif
-
-// <o> DTM_RADIO_IRQ_PRIORITY - RADIO interrupt priority 
-#ifndef DTM_RADIO_IRQ_PRIORITY
-#define DTM_RADIO_IRQ_PRIORITY 2
-#endif
-
-// <o> DTM_TIMER_IRQ_PRIORITY - DTM timer interrupt priority 
-#ifndef DTM_TIMER_IRQ_PRIORITY
-#define DTM_TIMER_IRQ_PRIORITY 3
-#endif
-
-// <o> DTM_ANOMALY_172_TIMER_IRQ_PRIORITY - DTM anomaly 172 timer interrupt priority 
-#ifndef DTM_ANOMALY_172_TIMER_IRQ_PRIORITY
-#define DTM_ANOMALY_172_TIMER_IRQ_PRIORITY 2
-#endif
-
-// <o> NRF_DTM_TIMER_INSTANCE  - DTM TIMER instance
- 
-// <0=> TIMER0 
-// <2=> TIMER2 
-// <3=> TIMER3 
-// <4=> TIMER4 
-
-#ifndef NRF_DTM_TIMER_INSTANCE
-#define NRF_DTM_TIMER_INSTANCE 0
-#endif
-
-// </e>
 
 // <q> BLE_RACP_ENABLED  - ble_racp - Record Access Control Point library
  
@@ -172,19 +106,12 @@
 #define BLE_RACP_ENABLED 0
 #endif
 
-// <e> NRF_BLE_GATT_ENABLED - nrf_ble_gatt - GATT module
-//==========================================================
+// <q> NRF_BLE_GATT_ENABLED  - nrf_ble_gatt - GATT module
+ 
+
 #ifndef NRF_BLE_GATT_ENABLED
 #define NRF_BLE_GATT_ENABLED 1
 #endif
-// <q> NRF_BLE_GATT_MTU_EXCHANGE_INITIATION_ENABLED  - Enable GATT MTU exchange initiation
- 
-
-#ifndef NRF_BLE_GATT_MTU_EXCHANGE_INITIATION_ENABLED
-#define NRF_BLE_GATT_MTU_EXCHANGE_INITIATION_ENABLED 1
-#endif
-
-// </e>
 
 // <e> NRF_BLE_GQ_ENABLED - nrf_ble_gq - BLE GATT Queue Module
 //==========================================================
@@ -299,12 +226,12 @@
 #endif
 // <o> NRF_BLE_SCAN_UUID_CNT - Number of filters for UUIDs. 
 #ifndef NRF_BLE_SCAN_UUID_CNT
-#define NRF_BLE_SCAN_UUID_CNT 0
+#define NRF_BLE_SCAN_UUID_CNT 1
 #endif
 
 // <o> NRF_BLE_SCAN_NAME_CNT - Number of name filters. 
 #ifndef NRF_BLE_SCAN_NAME_CNT
-#define NRF_BLE_SCAN_NAME_CNT 1
+#define NRF_BLE_SCAN_NAME_CNT 0
 #endif
 
 // <o> NRF_BLE_SCAN_SHORT_NAME_CNT - Number of short name filters. 
@@ -628,7 +555,7 @@
  
 
 #ifndef BLE_LBS_C_ENABLED
-#define BLE_LBS_C_ENABLED 1
+#define BLE_LBS_C_ENABLED 0
 #endif
 
 // <q> BLE_LBS_ENABLED  - ble_lbs - LED Button Service
@@ -649,7 +576,7 @@
  
 
 #ifndef BLE_NUS_C_ENABLED
-#define BLE_NUS_C_ENABLED 0
+#define BLE_NUS_C_ENABLED 1
 #endif
 
 // <e> BLE_NUS_ENABLED - ble_nus - Nordic UART Service
@@ -4888,17 +4815,6 @@
 #define NRFX_USBD_CONFIG_ISO_IN_ZLP 0
 #endif
 
-// <q> NRFX_USBD_USE_WORKAROUND_FOR_ANOMALY_211  - Use workaround for anomaly 211
- 
-
-// <i> If set, workaround for anomaly 211 will be enabled.
-// <i> Anomaly 211 - Device remains in SUSPEND too long when host resumes
-// <i> bus activity (sending SOF packets) without a RESUME condition.
-
-#ifndef NRFX_USBD_USE_WORKAROUND_FOR_ANOMALY_211
-#define NRFX_USBD_USE_WORKAROUND_FOR_ANOMALY_211 0
-#endif
-
 // </e>
 
 // <e> NRFX_WDT_ENABLED - nrfx_wdt - WDT peripheral driver
@@ -4917,7 +4833,7 @@
 #define NRFX_WDT_CONFIG_BEHAVIOUR 1
 #endif
 
-// <o> NRFX_WDT_CONFIG_RELOAD_VALUE - Reload value in ms  <1-131072000> 
+// <o> NRFX_WDT_CONFIG_RELOAD_VALUE - Reload value  <15-4294967295> 
 
 
 #ifndef NRFX_WDT_CONFIG_RELOAD_VALUE
@@ -6296,6 +6212,13 @@
 // <h> nRF_Libraries 
 
 //==========================================================
+// <q> APP_FIFO_ENABLED  - app_fifo - Software FIFO implementation
+ 
+
+#ifndef APP_FIFO_ENABLED
+#define APP_FIFO_ENABLED 1
+#endif
+
 // <q> APP_GPIOTE_ENABLED  - app_gpiote - GPIOTE events dispatcher
  
 
@@ -6468,6 +6391,21 @@
 
 // </h> 
 //==========================================================
+
+// </e>
+
+// <e> APP_UART_ENABLED - app_uart - UART driver
+//==========================================================
+#ifndef APP_UART_ENABLED
+#define APP_UART_ENABLED 1
+#endif
+// <o> APP_UART_DRIVER_INSTANCE  - UART instance used
+ 
+// <0=> 0 
+
+#ifndef APP_UART_DRIVER_INSTANCE
+#define APP_UART_DRIVER_INSTANCE 0
+#endif
 
 // </e>
 
@@ -7593,6 +7531,13 @@
 #define NRF_TWI_MNGR_ENABLED 0
 #endif
 
+// <q> RETARGET_ENABLED  - retarget - Retargeting stdio functions
+ 
+
+#ifndef RETARGET_ENABLED
+#define RETARGET_ENABLED 1
+#endif
+
 // <q> SLIP_ENABLED  - slip - SLIP encoding and decoding
  
 
@@ -7802,7 +7747,7 @@
  
 
 #ifndef NRF_FPRINTF_FLAG_AUTOMATIC_CR_ON_LF_ENABLED
-#define NRF_FPRINTF_FLAG_AUTOMATIC_CR_ON_LF_ENABLED 1
+#define NRF_FPRINTF_FLAG_AUTOMATIC_CR_ON_LF_ENABLED 0
 #endif
 
 // <q> NRF_FPRINTF_DOUBLE_ENABLED  - Enable IEEE-754 double precision formatting.
@@ -7824,7 +7769,7 @@
 // <e> NRF_LOG_BACKEND_RTT_ENABLED - nrf_log_backend_rtt - Log RTT backend
 //==========================================================
 #ifndef NRF_LOG_BACKEND_RTT_ENABLED
-#define NRF_LOG_BACKEND_RTT_ENABLED 0
+#define NRF_LOG_BACKEND_RTT_ENABLED 1
 #endif
 // <o> NRF_LOG_BACKEND_RTT_TEMP_BUFFER_SIZE - Size of buffer for partially processed strings. 
 // <i> Size of the buffer is a trade-off between RAM usage and processing.
@@ -7850,51 +7795,6 @@
 
 #ifndef NRF_LOG_BACKEND_RTT_TX_RETRY_CNT
 #define NRF_LOG_BACKEND_RTT_TX_RETRY_CNT 3
-#endif
-
-// </e>
-
-// <e> NRF_LOG_BACKEND_UART_ENABLED - nrf_log_backend_uart - Log UART backend
-//==========================================================
-#ifndef NRF_LOG_BACKEND_UART_ENABLED
-#define NRF_LOG_BACKEND_UART_ENABLED 1
-#endif
-// <o> NRF_LOG_BACKEND_UART_TX_PIN - UART TX pin 
-#ifndef NRF_LOG_BACKEND_UART_TX_PIN
-#define NRF_LOG_BACKEND_UART_TX_PIN 6
-#endif
-
-// <o> NRF_LOG_BACKEND_UART_BAUDRATE  - Default Baudrate
- 
-// <323584=> 1200 baud 
-// <643072=> 2400 baud 
-// <1290240=> 4800 baud 
-// <2576384=> 9600 baud 
-// <3862528=> 14400 baud 
-// <5152768=> 19200 baud 
-// <7716864=> 28800 baud 
-// <10289152=> 38400 baud 
-// <15400960=> 57600 baud 
-// <20615168=> 76800 baud 
-// <30801920=> 115200 baud 
-// <61865984=> 230400 baud 
-// <67108864=> 250000 baud 
-// <121634816=> 460800 baud 
-// <251658240=> 921600 baud 
-// <268435456=> 1000000 baud 
-
-#ifndef NRF_LOG_BACKEND_UART_BAUDRATE
-#define NRF_LOG_BACKEND_UART_BAUDRATE 30801920
-#endif
-
-// <o> NRF_LOG_BACKEND_UART_TEMP_BUFFER_SIZE - Size of buffer for partially processed strings. 
-// <i> Size of the buffer is a trade-off between RAM usage and processing.
-// <i> if buffer is smaller then strings will often be fragmented.
-// <i> It is recommended to use size which will fit typical log and only the
-// <i> longer one will be fragmented.
-
-#ifndef NRF_LOG_BACKEND_UART_TEMP_BUFFER_SIZE
-#define NRF_LOG_BACKEND_UART_TEMP_BUFFER_SIZE 64
 #endif
 
 // </e>
@@ -11568,7 +11468,7 @@
 // <i> Requested BLE GAP data length to be negotiated.
 
 #ifndef NRF_SDH_BLE_GAP_DATA_LENGTH
-#define NRF_SDH_BLE_GAP_DATA_LENGTH 27
+#define NRF_SDH_BLE_GAP_DATA_LENGTH 251
 #endif
 
 // <o> NRF_SDH_BLE_PERIPHERAL_LINK_COUNT - Maximum number of peripheral links. 
@@ -11578,14 +11478,14 @@
 
 // <o> NRF_SDH_BLE_CENTRAL_LINK_COUNT - Maximum number of central links. 
 #ifndef NRF_SDH_BLE_CENTRAL_LINK_COUNT
-#define NRF_SDH_BLE_CENTRAL_LINK_COUNT 8
+#define NRF_SDH_BLE_CENTRAL_LINK_COUNT 4
 #endif
 
 // <o> NRF_SDH_BLE_TOTAL_LINK_COUNT - Total link count. 
 // <i> Maximum number of total concurrent connections using the default configuration.
 
 #ifndef NRF_SDH_BLE_TOTAL_LINK_COUNT
-#define NRF_SDH_BLE_TOTAL_LINK_COUNT 8
+#define NRF_SDH_BLE_TOTAL_LINK_COUNT 4
 #endif
 
 // <o> NRF_SDH_BLE_GAP_EVENT_LENGTH - GAP event length. 
@@ -11597,7 +11497,7 @@
 
 // <o> NRF_SDH_BLE_GATT_MAX_MTU_SIZE - Static maximum MTU size. 
 #ifndef NRF_SDH_BLE_GATT_MAX_MTU_SIZE
-#define NRF_SDH_BLE_GATT_MAX_MTU_SIZE 23
+#define NRF_SDH_BLE_GATT_MAX_MTU_SIZE 247
 #endif
 
 // <o> NRF_SDH_BLE_GATTS_ATTR_TAB_SIZE - Attribute Table size in bytes. The size must be a multiple of 4. 

@@ -43,4 +43,4 @@
 *.pdb
 
 # my additions
-/ble_app_multilink_central_NinaBaseBoard/pca10056/s140/ses/Output/
+NinaBaseBoard_nrf52-ble-app-uart-c-multilink-master/pca10056/s140/ses/Output
